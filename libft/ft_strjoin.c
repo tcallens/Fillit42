@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tcallens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 21:20:07 by rdurst            #+#    #+#             */
-/*   Updated: 2017/11/14 21:52:26 by rdurst           ###   ########.fr       */
+/*   Created: 2017/11/15 23:14:44 by tcallens          #+#    #+#             */
+/*   Updated: 2017/11/15 23:17:13 by tcallens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*fresh;
-	int		i;
-	int		j;
+	int		a;
+	int		b;
 
-	i = 0;
-	j = 0;
+	a = 0;
+	b = 0;
 	if (!s1 || !s2)
 		return (NULL);
 	fresh = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (fresh == NULL)
 		return (NULL);
-	while (s1[i])
+	while (s1[a])
 	{
-		fresh[i] = s1[i];
-		i++;
+		fresh[a] = s1[a];
+		a++;
 	}
-	while (s2[j])
-		fresh[i++] = s2[j++];
-	fresh[i] = '\0';
+	while (s2[b])
+		fresh[a++] = s2[b++];
+	fresh[a] = '\0';
 	return (fresh);
 }

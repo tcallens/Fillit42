@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tcallens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:24:10 by rdurst            #+#    #+#             */
-/*   Updated: 2017/11/14 17:06:23 by rdurst           ###   ########.fr       */
+/*   Created: 2017/11/13 01:31:21 by tcallens          #+#    #+#             */
+/*   Updated: 2017/11/15 05:28:30 by tcallens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	if (ISNBR(c) || (ISLWR(c) || ISUPR(c)))
+	if (ISNBR(c) || (ISLOWER(c) || ISUPPER(c)))
 		return (1);
 	return (0);
 }
