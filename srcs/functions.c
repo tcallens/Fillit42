@@ -6,7 +6,7 @@
 /*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:07:00 by rdurst            #+#    #+#             */
-/*   Updated: 2017/11/28 18:04:57 by tcallens         ###   ########.fr       */
+/*   Updated: 2018/01/25 18:30:12 by tcallens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char		*ft_read_file(char *file, char *buf)
 		close(fd);
 	}
 	else
+		ft_error();
+	if (ft_strlen(buf) > 545)
 		ft_error();
 	return ((char *)buf);
 }

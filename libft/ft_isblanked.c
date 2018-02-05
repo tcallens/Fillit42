@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_isblanked.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:44:00 by rdurst            #+#    #+#             */
-/*   Updated: 2017/11/16 17:45:35 by rdurst           ###   ########.fr       */
+/*   Created: 2017/11/20 17:51:46 by rdurst            #+#    #+#             */
+/*   Updated: 2017/11/20 17:51:51 by rdurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, char const *src, size_t size)
+int		ft_isblanked(char c)
 {
-	size_t len;
-
-	len = ft_strlen(dst);
-	if (size <= len)
-		return (size + ft_strlen(src));
-	ft_strncat(dst, src, size - len - 1);
-	return (len + ft_strlen(src));
+	if (c == '\t' || c == '\n' || c == '\r'
+			|| c == '\f' || c == '\v' || c == ' ')
+		return (1);
+	return (0);
 }

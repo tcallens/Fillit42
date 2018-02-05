@@ -6,7 +6,7 @@
 /*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 12:37:24 by rdurst            #+#    #+#             */
-/*   Updated: 2017/12/18 16:56:21 by rdurst           ###   ########.fr       */
+/*   Updated: 2018/01/29 18:11:58 by tcallens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_piece
 	struct s_piece	*next;
 }					t_piece;
 
+int					ft_check_count(char *piece, int size);
 int					ft_replace(t_piece *tmp, int a);
 void				ft_move_topleft(char *piece, int a);
 char				*ft_new_map(int size);
@@ -39,8 +40,6 @@ char				*ft_read_file(char *file, char *buf);
 int					ft_check_error(char *pieces);
 void				ft_error(void);
 t_piece				*ft_newpiece(char *pieces, char letter);
-int					ft_check_piece(char *piece);
-int					ft_check_count(char *piece, int size);
 int					ft_check_pieces(char *pieces);
 int					ft_checks(char *pieces);
 t_piece				*ft_createlist(void);
@@ -57,5 +56,8 @@ int					ft_count_pieces(t_piece *pieces);
 int					ft_sqrt(int nb);
 int					ft_find_sqrt(int nb);
 int					ft_count_endl(char *pieces);
+int					check_endlines(char *rodeur);
+int					check_counts(char *str);
+int					check_connection(char *str);
 
 #endif

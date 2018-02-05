@@ -6,7 +6,7 @@
 #    By: rdurst <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/17 14:58:58 by rdurst            #+#    #+#              #
-#    Updated: 2017/12/04 13:32:08 by rdurst           ###   ########.fr        #
+#    Updated: 2018/01/25 17:49:22 by tcallens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = ./srcs/main.c		\
 	   ./srcs/solver.c		\
 	   ./srcs/functions_solver.c	\
 	   ./srcs/map.c			\
+	   ./srcs/rodeur.c		\
 
 INCS = -I ./includes
 LIB = -L ./libft -lft

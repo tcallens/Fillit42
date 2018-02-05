@@ -3,96 +3,106 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcallens <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rdurst <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/11 21:18:59 by tcallens          #+#    #+#              #
-#    Updated: 2017/11/22 01:03:26 by tcallens         ###   ########.fr        #
+#    Created: 2017/11/09 12:23:27 by rdurst            #+#    #+#              #
+#    Updated: 2017/11/21 14:54:41 by rdurst           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+CFILES = $(addsuffix .c, $(SRCS))
+OFILES = $(addsuffix .o, $(SRCS))
+INC = libft.h
+SRCS =\
+	ft_atoi\
+	ft_bzero\
+	ft_isalnum\
+	ft_isalpha\
+	ft_isascii\
+	ft_isdigit\
+	ft_isprint\
+	ft_itoa\
+	ft_memalloc\
+	ft_memccpy\
+	ft_memchr\
+	ft_memcmp\
+	ft_memcpy\
+	ft_memdel\
+	ft_memmove\
+	ft_memset\
+	ft_putchar\
+	ft_putchar_fd\
+	ft_putendl\
+	ft_putendl_fd\
+	ft_putnbr\
+	ft_putnbr_fd\
+	ft_putstr\
+	ft_putstr_fd\
+	ft_strcat\
+	ft_strchr\
+	ft_strclr\
+	ft_strcmp\
+	ft_strcpy\
+	ft_strdel\
+	ft_strdup\
+	ft_strequ\
+	ft_striter\
+	ft_striteri\
+	ft_strjoin\
+	ft_strlcat\
+	ft_strlen\
+	ft_strmap\
+	ft_strmapi\
+	ft_strncat\
+	ft_strncmp\
+	ft_strncpy\
+	ft_strnequ\
+	ft_strnew\
+	ft_strnstr\
+	ft_strrchr\
+	ft_strsplit\
+	ft_strstr\
+	ft_strtrim\
+	ft_tolower\
+	ft_strsub\
+	ft_toupper\
+	ft_lstnew\
+	ft_lstdelone\
+	ft_lstdel\
+	ft_lstiter\
+	ft_lstmap\
+	ft_lstadd\
+	ft_intendl\
+	ft_countwords\
+	ft_wordlen\
+	ft_trimsize\
+	ft_intsize\
+	ft_isblanked
 
-FLAGS = -Wall -Wextra -Werror
+RED = \033[1;31m
+GREEN = \033[1;32m
+BLUE = \033[1;34m
+RESET = \033[0m
 
-SRC =\
-	 ft_atoi.c\
-	 ft_bzero.c\
-	 ft_isalnum.c\
-	 ft_isalpha.c\
-	 ft_isascii.c\
-	 ft_isdigit.c\
-	 ft_isprint.c\
-	 ft_itoa.c\
-	 ft_memalloc.c\
-	 ft_memccpy.c\
-	 ft_memchr.c\
-	 ft_memcmp.c\
-	 ft_memcpy.c\
-	 ft_memdel.c\
-	 ft_memmove.c\
-	 ft_memset.c\
-	 ft_putchar.c\
-	 ft_putchar_fd.c\
-	 ft_putendl.c\
-	 ft_putendl_fd.c\
-	 ft_putnbr.c\
-	 ft_putnbr_fd.c\
-	 ft_putstr.c\
-	 ft_putstr_fd.c\
-	 ft_strcat.c\
-	 ft_strchr.c\
-	 ft_strclr.c\
-	 ft_strcmp.c\
-	 ft_strcpy.c\
-	 ft_strdel.c\
-	 ft_strdup.c\
-	 ft_strequ.c\
-	 ft_striter.c\
-	 ft_striteri.c\
-	 ft_strjoin.c\
-	 ft_strlcat.c\
-	 ft_strlen.c\
-	 ft_strmap.c\
-	 ft_strmapi.c\
-	 ft_strncat.c\
-	 ft_strncmp.c\
-	 ft_strncpy.c\
-	 ft_strnequ.c\
-	 ft_strnew.c\
-	 ft_strnstr.c\
-	 ft_strrchr.c\
-	 ft_strsplit.c\
-	 ft_strstr.c\
-	 ft_strtrim.c\
-	 ft_tolower.c\
-	 ft_strsub.c\
-	 ft_toupper.c\
-	 ft_lstnew.c\
-	 ft_lstdelone.c\
-	 ft_lstdel.c\
-	 ft_lstiter.c\
-	 ft_lstmap.c\
-	 ft_lstadd.c\
-	 ft_intendl.c\
-	 ft_countwords.c\
-	 ft_wordlen.c\
-	 ft_calctrim.c\
-	 ft_intsize.c\
-	 ft_fisblank.c\
-
-OBJ = $(SRC:.c=.o)
-
-$(NAME):
-	gcc $(FLAGS) -c $(SRC) -I ./
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+.PHONY: re clean fclean all
 
 all: $(NAME)
 
+$(NAME): $(CFILES) libft.h Makefile
+	@$(CC) $(CFLAGS) -I $(INC) -c $(CFILES)
+	@ar rc $(NAME) $(OFILES)
+	@ranlib $(NAME)
+	@echo "$(GREEN)			libft has been built.\n$(RESET)"
+
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OFILES)
+	@echo "$(GREEN)			.o files removed.\n$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED) 			libft.a removed.\n$(RESET)"
 
-re: fclean all
+re:	fclean all

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft2.h                                           :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcallens <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 23:42:26 by tcallens          #+#    #+#             */
-/*   Updated: 2017/11/22 23:42:47 by tcallens         ###   ########.fr       */
+/*   Created: 2017/11/09 12:31:11 by rdurst            #+#    #+#             */
+/*   Updated: 2017/11/20 17:50:10 by rdurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,19 @@
 # include <stdlib.h>
 
 # define ISNBR(x) (x >= '0' && x <= '9')
-# define ISLOWER(x) (x >= 'a' && x <= 'z')
-# define ISUPPER(x) (x >= 'A' && x <= 'Z')
+# define ISLWR(x) (x >= 'a' && x <= 'z')
+# define ISUPR(x) (x >= 'A' && x <= 'Z')
+# define RESET "\x1B[0m"
+# define RED "\x1B[31m"
+# define GREEN "\x1B[32m"
+# define YELLOW "\x1B[33m"
+# define BLUE "\x1B[34m"
+# define MAGENTA "\x1B[35m"
+# define CYAN "\x1B[36m"
+# define WHITE "\x1B[37m"
+# define BRED "\033[1;31m"
+# define BGREEN "\033[1;32m"
+# define BBLUE "\033[1;34m"
 
 typedef struct	s_list
 {
@@ -27,8 +38,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-int				ft_calctrim(char const *str);
-int				ft_fisblank(char c);
+int				ft_isblanked(char c);
 void			ft_putchar(char c);
 void			ft_putstr(char const *str);
 size_t			ft_strlen(char const *str);
@@ -80,6 +90,8 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 int				ft_intsize(int n);
 char			*ft_itoa(int n);
+void			ft_putcolor(char *color, char *str);
+int				ft_trimsize(char const *str);
 char			*ft_strtrim(char const *s);
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putcolor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:44:00 by rdurst            #+#    #+#             */
-/*   Updated: 2017/11/16 17:45:35 by rdurst           ###   ########.fr       */
+/*   Created: 2017/11/12 22:53:50 by rdurst            #+#    #+#             */
+/*   Updated: 2017/11/12 23:02:43 by rdurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, char const *src, size_t size)
+void	ft_putcolor(char *color, char *str)
 {
-	size_t len;
-
-	len = ft_strlen(dst);
-	if (size <= len)
-		return (size + ft_strlen(src));
-	ft_strncat(dst, src, size - len - 1);
-	return (len + ft_strlen(src));
+	ft_putstr(color);
+	ft_putstr(str);
+	ft_putstr(RESET);
 }

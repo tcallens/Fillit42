@@ -6,35 +6,35 @@
 /*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 23:24:37 by rdurst            #+#    #+#             */
-/*   Updated: 2017/12/14 04:09:46 by rdurst           ###   ########.fr       */
+/*   Updated: 2018/01/29 18:36:12 by tcallens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		ft_check_piece(char *piece)
+int		check_connection(char *str)
 {
+	int block;
 	int i;
-	int counter;
 
+	block = 0;
 	i = 0;
-	counter = 0;
 	while (i < 20)
 	{
-		if (piece[i] == '#')
+		if (str[i] == '#')
 		{
-			if (piece[i + 1] == '#')
-				counter++;
-			if (piece[i - 1] == '#')
-				counter++;
-			if (i < 15 && piece[i + 5] == '#')
-				counter++;
-			if (i > 4 && piece[i - 5] == '#')
-				counter++;
+			if (i < 20 && str[i + 1] == '#')
+				block++;
+			if (i > 0 && str[i - 1] == '#')
+				block++;
+			if (i < 15 && str[i + 5] == '#')
+				block++;
+			if (i > 4 && str[i - 5] == '#')
+				block++;
 		}
 		i++;
 	}
-	if (counter == 8 || counter == 6)
+	if (block == 6 || block == 8)
 		return (1);
 	return (0);
 }
@@ -55,59 +55,54 @@ int		ft_check_count(char *piece, int size)
 	return (count);
 }
 
-int		ft_check_error(char *pieces)
+int		check_counts(char *str)
 {
-	if (ft_count_endl(pieces) == 0)
-		return (0);
-	while (*pieces)
+	int i;
+	int blocs;
+
+	blocs = 0;
+	i = 0;
+	while (i < 20)
 	{
-		if (pieces[4] == '\n' && pieces[9] == '\n' && pieces[14] == '\n'
-				&& pieces[19] == '\n')
+		if (i % 5 < 4)
 		{
-			if (pieces[20] == '\n' && (pieces[21] == '.' || pieces[21] == '#'))
+			if (!(str[i] == '#' || str[i] == '.'))
 				return (1);
-			else
-			{
-				if (pieces[20] == '\0')
-					return (2);
-				else
-					return (0);
-			}
+			if (str[i] == '#' && ++blocs > 4)
+				return (2);
 		}
-		else
-			return (0);
+		else if (str[i] != '\n')
+			return (3);
+		i++;
 	}
-	return (1);
+	if (check_connection(str) == 0)
+		return (5);
+	if (blocs < 4)
+		return (6);
+	if (str[20] != '\n' && str[20] == '\0')
+		return (4);
+	return (0);
 }
 
 int		ft_check_pieces(char *pieces)
 {
-	if (*pieces == '\0')
-		return (1);
-	if (ft_check_piece(pieces) == 1 && ft_check_count(pieces, 4) == 4)
+	int num;
+
+	num = 0;
+	while (num == 0)
 	{
-		if (ft_check_error(pieces) == 1)
-			return (ft_check_pieces(pieces + 21));
-		else if (ft_check_error(pieces) == 2)
-			return (ft_check_pieces(pieces + 20));
-		else
-			return (0);
+		num = check_counts(pieces);
+		if (num != 0 && num != 4)
+			ft_error();
+		if (num == 4)
+			return (1);
+		pieces += 21;
 	}
-	else
-		return (0);
+	return (1);
 }
 
 int		ft_checks(char *pieces)
 {
-	int i;
-
-	i = 0;
-	while (pieces[i])
-	{
-		if (pieces[i] != '\n' && pieces[i] != '#' && pieces[i] != '.')
-			return (0);
-		i++;
-	}
 	if (ft_check_pieces(pieces) == 1)
 		return (1);
 	return (0);

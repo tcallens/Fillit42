@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcallens <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 01:29:45 by tcallens          #+#    #+#             */
-/*   Updated: 2017/11/15 05:29:32 by tcallens         ###   ########.fr       */
+/*   Created: 2017/11/09 12:24:24 by rdurst            #+#    #+#             */
+/*   Updated: 2017/11/14 17:13:43 by rdurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isalpha(int c)
 {
-	if (ISLOWER(c) || ISUPPER(c))
+	if (ISLWR(c) || ISUPR(c))
 		return (1);
 	return (0);
 }

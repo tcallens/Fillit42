@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isblank.c                                       :+:      :+:    :+:   */
+/*   rodeur.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcallens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 02:17:26 by tcallens          #+#    #+#             */
-/*   Updated: 2017/11/22 01:05:58 by tcallens         ###   ########.fr       */
+/*   Created: 2018/01/25 17:45:21 by tcallens          #+#    #+#             */
+/*   Updated: 2018/01/25 17:56:54 by tcallens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "header.h"
 
-int		ft_fisblank(char c)
+int		check_endlines(char *rodeur)
 {
-	if (c == '\t' || c == '\n' || c == '\r'
-			|| c == '\f' || c == '\v' || c == ' ')
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (i < 20)
+	{
+		if (rodeur[i] == '\n')
+			count++;
+		i++;
+	}
+	if (count == 4)
 		return (1);
 	return (0);
 }

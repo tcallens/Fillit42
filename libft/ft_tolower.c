@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcallens <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdurst <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 01:44:35 by tcallens          #+#    #+#             */
-/*   Updated: 2017/11/15 05:29:53 by tcallens         ###   ########.fr       */
+/*   Created: 2017/11/09 12:30:01 by rdurst            #+#    #+#             */
+/*   Updated: 2017/11/14 17:14:23 by rdurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_tolower(int c)
 {
-	if (ISUPPER(c))
+	if (ISUPR(c))
 		return (c + 32);
 	return (c);
 }
